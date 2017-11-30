@@ -4,7 +4,6 @@
     "parameters": {
         "storageAccountName": {
             "type": "string",
-            "defaultValue": "eastus",
             "metadata": {
                 "description": "Storage Account Name"
               }
