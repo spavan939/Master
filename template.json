@@ -2,31 +2,25 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "vmNamePrefix": {
+            "type": "string",
+            "metadata": {
+              "description": "Prefix to use for server VM names"
+            }
+          },
+          "domainNameLabel": {
+            "type": "string",
+            "metadata": {
+              "description": "Unique DNS name label."
+            }
+          },
         "storageAccountName": {
             "type": "string",
             "metadata": {
                 "description": "Storage Account Name"
               }
           },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-              "description": "Unique DNS name label."
-            }
-          },
-          "vmNamePrefix": {
-            "type": "string",
-            "metadata": {
-              "description": "Prefix to use for server VM names"
-            }
-          },
-          "AvivmName": {
-            "type": "string",
-            "metadata": {
-              "description": "Prefix to use for server VM names"
-            }
-          },
-        "adminName": {
+         "adminName": {
             "type": "string",
             "metadata": {
                 "description": "User name for the Virtual Machine."
@@ -38,23 +32,29 @@
                 "description": "Password for the Virtual Machine."
             }
         },
+          "AvivmName": {
+            "type": "string",
+            "metadata": {
+              "description": "Prefix to use for server VM names"
+            }
+          },
         "ubuntuOSVersion": {
             "type": "string",
             "metadata": {
                 "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version. Allowed values: 12.04.5-LTS, 14.04.2-LTS, 15.10."
             }
-        }
-    },
+        },
         "location": {
             "type": "string",
             "metadata": {
          "description": "Deployment location."
            }
-         },
+         }
+    },
+
     "variables": {
         "imagePublisher": "Canonical",
         "imageOffer": "UbuntuServer",
-        "OSDiskName": "osdiskforlinuxsimple",
         "addressPrefix": "10.0.0.0/16",
         "subnetName": "Subnet",
         "subnetPrefix": "10.0.0.0/24",
@@ -63,7 +63,6 @@
         "imagePublisheravi": "avi-networks",
         "imageOfferavi": "avi-vantage-adc",
         "imageSKUavi": "avi-vantage-adc-byol",
-        "vmStorageAccountContainerName": "vhds",
         "vnetName": "[concat(parameters('vmNamePrefix'),'-vnet')]",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',Variables('vnetName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
