@@ -20,12 +20,6 @@
               "description": "Prefix to use for server VM names"
             }
           },
-          "location": {
-            "type": "string",
-            "metadata": {
-         "description": "Deployment location."
-           }
-         },
           "AvivmName": {
             "type": "string",
             "metadata": {
@@ -51,6 +45,12 @@
             }
         }
     },
+        "location": {
+            "type": "string",
+            "metadata": {
+         "description": "Deployment location."
+           }
+         },
     "variables": {
         "imagePublisher": "Canonical",
         "imageOffer": "UbuntuServer",
