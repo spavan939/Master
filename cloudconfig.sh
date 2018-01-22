@@ -10,6 +10,6 @@ sleep 2
 
 sed -i 's/AVI-RESOURCE-GROUP/'"$Test"'/g' /var/lib/cloud/instance/user-data.txt
 
-sleep 1
+sleep 2
 
 reboot
